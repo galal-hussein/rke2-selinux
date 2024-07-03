@@ -1,7 +1,7 @@
 FROM centos:7
 
 RUN sh -x  \
-  for i in $(ls /etc/yum.repos.d); do \
+  for i in $(ls /etc/yum.repos.d); do; \
     sed -i -e "s/mirrorlist.*//g" /etc/yum.repos.d/$i && \
     sed -i -e "s/#baseurl=http:\/\/mirror.centos.org/baseurl=http:\/\/linuxsoft.cern.ch\/centos-vault\//g" /etc/yum.repos.d/$i; \
   done
