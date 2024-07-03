@@ -1,7 +1,10 @@
 #!/bin/bash
 set -ex
 
+
 cd $(dirname $0)/..
+ls -la
+pwd
 
 CHECKSUM_DIR=${CHECKSUM_DIR:-./dist/centos7/noarch}
 CHECKSUM_FILE=${CHECKSUM_FILE:-CHECKSUMsum-centos7-noarch.txt}
