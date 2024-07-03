@@ -61,16 +61,14 @@ jobs:
       run: |
         make centos7-checksum 
       env:
-        DEST_DIR: dist/centos7/noarch/ 
-        CHECKSUM_METHOD: sha256
+        CHECKSUM_DIR: dist/centos7/noarch/ 
         CHECKSUM_FILE: CHECKSUMsum-centos7-noarch.txt
 
     - name: checksum-srcrpm-el7
       run: |
         make checksum 
       env:
-        DEST_DIR: dist/centos7/source
-        CHECKSUM_METHOD: sha256
+        CHECKSUM_DIR: dist/centos7/source
         CHECKSUM_FILE: CHECKSUMsum-centos7-noarch.txt
 
     - name: github-rpm-release-el7
