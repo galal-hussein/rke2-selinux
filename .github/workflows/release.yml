@@ -56,21 +56,7 @@ jobs:
         TESTING_AWS_S3_BUCKET: ${{ secrets.TESTING_AWS_S3_BUCKET }}
         TESTING_AWS_ACCESS_KEY_ID: ${{ secrets.TESTING_AWS_ACCESS_KEY_ID }}
         TESTING_AWS_SECRET_ACCESS_KEY: ${{ secrets.TESTING_AWS_SECRET_ACCESS_KEY }}
-    
-    - name: checksum-rpm-el7
-      run: |
-        make centos7-checksum 
-      env:
-        CHECKSUM_DIR: dist/centos7/noarch/ 
-        CHECKSUM_FILE: CHECKSUMsum-centos7-noarch.txt
-
-    - name: checksum-srcrpm-el7
-      run: |
-        make checksum 
-      env:
-        CHECKSUM_DIR: dist/centos7/source
-        CHECKSUM_FILE: CHECKSUMsum-centos7-noarch.txt
-
+        
     - name: github-rpm-release-el7
       run: |
         gh release upload ${{ github.ref_name }} dist/centos7/noarch/* dist/centos7/source/*
