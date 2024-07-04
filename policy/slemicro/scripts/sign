@@ -1,7 +1,5 @@
 #!/bin/bash
-set -e -x
-
-yum install -y rpm-sign expect git
+set -e -x 
 
 pushd $(dirname $0)/..
 . ./scripts/version
