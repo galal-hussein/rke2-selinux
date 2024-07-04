@@ -96,7 +96,7 @@ jobs:
       
     - name: upload-repo-el8
       run: |
-        make centos8-upload-repo
+        make upload-centos8
       env:
         COMBARCH: x86_64-amd64
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
@@ -145,7 +145,7 @@ jobs:
       
     - name: upload-repo-el9
       run: |
-        make centos9-upload-repo
+        make upload-centos9
       env:
         COMBARCH: x86_64-amd64
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
