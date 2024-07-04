@@ -194,7 +194,7 @@ jobs:
       
     - name: upload-repo-microos
       run: |
-        make microos-upload-repo
+        make upload-microos
       env:
         COMBARCH: x86_64-amd64
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
@@ -243,7 +243,7 @@ jobs:
       
     - name: upload-repo-slemicro
       run: |
-        make slemicro-upload-repo
+        make upload-slemicro
       env:
         COMBARCH: x86_64-amd64
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
