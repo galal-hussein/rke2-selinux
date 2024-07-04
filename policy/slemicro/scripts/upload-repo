@@ -5,8 +5,8 @@ pushd $(dirname $0)/..
 . ./scripts/version
 popd
 
-pip install --cache-dir=/var/cache/pip --upgrade 'boto3==1.17.112' 'pip<21.0' 'setuptools<45.0'
-pip install --cache-dir=/var/cache/pip/ \
+pip2 install --cache-dir=/var/cache/pip --upgrade 'boto3==1.17.112' 'pip<21.0' 'setuptools<45.0' yum
+pip2 install --cache-dir=/var/cache/pip/ \
   git+https://github.com/Voronenko/rpm-s3.git@5695c6ad9a08548141d3713328e1bd3f533d137e
 
 if [ -z "$RPM_CHANNEL" ]; then
