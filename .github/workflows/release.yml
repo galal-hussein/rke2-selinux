@@ -6,7 +6,7 @@ on:
 env:
     GH_TOKEN: ${{ github.token }}
 
-name: Release EL7
+name: Release RPMs
 permissions:
     contents: write
     id-token: write
