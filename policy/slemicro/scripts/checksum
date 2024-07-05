@@ -10,7 +10,7 @@ CHECKSUM_DIR=${CHECKSUM_DIR:-./dist/centos7/noarch/}
 CHECKSUM_FILE=${CHECKSUM_FILE:-CHECKSUMsum-centos7-noarch.txt}
 sumfile="${CHECKSUM_DIR}/${CHECKSUM_FILE}"
 
-echo -n "" > "${sumfile}"
+touch "${sumfile}"
 
 files=$(ls ${CHECKSUM_DIR} | grep -v "CHECKSUMsum")
 for file in ${files}; do
