@@ -1,10 +1,6 @@
-CENTOS7_TARGETS := $(addprefix centos7-,$(shell ls policy/centos7/scripts))
-CENTOS8_TARGETS := $(addprefix centos8-,$(shell ls policy/centos8/scripts))
-CENTOS9_TARGETS := $(addprefix centos9-,$(shell ls policy/centos9/scripts))
-MICROOS_TARGETS := $(addprefix microos-,$(shell ls policy/microos/scripts))
-SLEMICRO_TARGETS := $(addprefix slemicro-,$(shell ls policy/slemicro/scripts))
 UPLOAD_TARGETS := $(addprefix upload-,$(shell ls policy/))
-
+BUILD_TARGETS := $(addprefix build-,$(shell ls policy/))
+SIGN_TARGETS := $(addprefix sign-,$(shell ls policy/))
 .dapper:
 	@echo Downloading dapper
 	@curl -sL https://releases.rancher.com/dapper/latest/dapper-$$(uname -s)-$$(uname -m) > .dapper.tmp
@@ -12,25 +8,16 @@ UPLOAD_TARGETS := $(addprefix upload-,$(shell ls policy/))
 	@./.dapper.tmp -v
 	@mv .dapper.tmp .dapper
 
-$(CENTOS7_TARGETS): .dapper
-	./.dapper -f Dockerfile.centos7.dapper $(@:centos7-%=%)
+$(BUILD_TARGETS): .dapper
+	./.dapper -f Dockerfile.$(@:build-%=%).dapper ./policy/$(@:build-%=%)/scripts/build
 
-$(CENTOS8_TARGETS): .dapper
-	./.dapper -f Dockerfile.centos8.dapper $(@:centos8-%=%)
-
-$(CENTOS9_TARGETS): .dapper
-	./.dapper -f Dockerfile.centos9.dapper $(@:centos9-%=%)
-
-$(MICROOS_TARGETS): .dapper
-	./.dapper -f Dockerfile.microos.dapper $(@:microos-%=%)
-
-$(SLEMICRO_TARGETS): .dapper
-	./.dapper -f Dockerfile.slemicro.dapper $(@:slemicro-%=%)
+$(SIGN_TARGETS): .dapper
+	./.dapper -f Dockerfile.centos7.dapper ./policy/$(@:sign-%=%)/scripts/sign
 
 $(UPLOAD_TARGETS): .dapper
-	./.dapper -f Dockerfile.upload.dapper ./policy/$(@:upload-%=%)/scripts/upload-repo
+	./.dapper -f Dockerfile.centos7.dapper ./policy/$(@:upload-%=%)/scripts/upload-repo
 
 clean:
 	rm -rf dist/ Dockerfile.*.dapper[0-9]*
 
-.PHONY: $(CENTOS7_TARGETS) $(CENTOS8_TARGETS) $(CENTOS9_TARGETS) $(MICROOS_TARGETS) $(SLEMICRO_TARGETS) clean
+.PHONY: $(UPLOAD_TARGETS) $(BUILD_TARGETS) $(SIGN_TARGETS) clean

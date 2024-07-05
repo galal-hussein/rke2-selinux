@@ -34,11 +34,11 @@ jobs:
           
     - name: build-rpm-el7
       run: |
-        make centos7-build
+        make build-centos7
     
     - name: sign-rpm-el7
       run: |
-        make centos7-sign
+        make sign-centos7
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         PRIVATE_KEY_PASS_PHRASE: ${{ secrets.PRIVATE_KEY_PASS_PHRASE }}
@@ -47,7 +47,7 @@ jobs:
       
     - name: upload-repo-el7
       run: |
-        make centos7-upload-repo
+        make upload-centos7
       env:
         COMBARCH: x86_64-amd64
         AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
@@ -83,11 +83,11 @@ jobs:
           
     - name: build-rpm-el8
       run: |
-        make centos8-build
+        make build-centos8
     
     - name: sign-rpm-el8
       run: |
-        make centos8-sign
+        make sign-centos8
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         PRIVATE_KEY_PASS_PHRASE: ${{ secrets.PRIVATE_KEY_PASS_PHRASE }}
@@ -132,11 +132,11 @@ jobs:
           
     - name: build-rpm-el9
       run: |
-        make centos9-build
+        make build-centos9
     
     - name: sign-rpm-el9
       run: |
-        make centos9-sign
+        make sign-centos9
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         PRIVATE_KEY_PASS_PHRASE: ${{ secrets.PRIVATE_KEY_PASS_PHRASE }}
@@ -181,11 +181,11 @@ jobs:
           
     - name: build-rpm-microos
       run: |
-        make microos-build
+        make build-microos
     
     - name: sign-rpm-microos
       run: |
-        make microos-sign
+        make sign-microos
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         PRIVATE_KEY_PASS_PHRASE: ${{ secrets.PRIVATE_KEY_PASS_PHRASE }}
@@ -230,11 +230,11 @@ jobs:
           
     - name: build-rpm-slemicro
       run: |
-        make slemicro-build
+        make build-slecmicro
     
     - name: sign-rpm-slemicro
       run: |
-        make slemicro-sign
+        make sign-slemicro
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         PRIVATE_KEY_PASS_PHRASE: ${{ secrets.PRIVATE_KEY_PASS_PHRASE }}
