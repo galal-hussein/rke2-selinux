@@ -8,7 +8,9 @@ pwd
 
 CHECKSUM_DIR=${CHECKSUM_DIR:-./dist/centos7/noarch/}
 CHECKSUM_FILE=${CHECKSUM_FILE:-CHECKSUMsum-centos7-noarch.txt}
-sumfile="${CHECKSUM_DIR}/${CHECKSUM_FILE}"
+DEST_DIR=${DEST_DIR:-${CHECKSUM_DIR}}
+
+sumfile="${DEST_DIR}/${CHECKSUM_FILE}"
 
 touch "${sumfile}"
 
