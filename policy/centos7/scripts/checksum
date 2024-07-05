@@ -12,7 +12,7 @@ sumfile="${CHECKSUM_DIR}/${CHECKSUM_FILE}"
 
 touch "${sumfile}"
 
-files=$(ls ${CHECKSUM_DIR} | grep -v "CHECKSUMsum")
+files=$(ls ${CHECKSUM_DIR} | grep -v "sha256sum")
 for file in ${files}; do
   sha256sum "${CHECKSUM_DIR}/${file}" | sed "s;$(dirname ${CHECKSUM_DIR}/${file})/;;g" >> "${sumfile}"
 done
