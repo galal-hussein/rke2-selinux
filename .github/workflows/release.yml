@@ -230,7 +230,7 @@ jobs:
           
     - name: build-rpm-slemicro
       run: |
-        make build-slecmicro
+        make build-slemicro
     
     - name: sign-rpm-slemicro
       run: |
